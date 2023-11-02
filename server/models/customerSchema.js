@@ -5,9 +5,9 @@ const customerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    customer_email: {
-        type: String,
-        required: [true, 'Customer Email should be there!']
+    customer_phone: {
+        type: Number,
+        required: [true, 'Customer Phone Number should be there!']
     },
     customer_overall_rating: {
         type: Number,
