@@ -138,7 +138,9 @@ code {
   font-family: 'Noto Serif Thai', serif;
   font-weight: 700;
 }
-
+.product-fee{
+  word-break: break-all;
+}
 
 
 /* thankyou Page */

@@ -1,7 +1,13 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-
+const cors = require('cors');
+app.use(cors({
+  origin: 'http://localhost:3000',
+}));
+app.use(cors({
+    origin: 'http://localhost:3000',
+  }));
 // Importing Routes
 const eventsRoute = require('./routers/eventsRoute')
 const productRoute = require('./routers/productRoute')

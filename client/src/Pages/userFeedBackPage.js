@@ -3,6 +3,7 @@ import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 const UserFeedBackPage = () => {
@@ -12,13 +13,26 @@ const UserFeedBackPage = () => {
   const [email, setEmail] = useState('');
   const [rating, setRating] = useState(2);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const data = {
+      customer_name: name,
+      customer_phone: number,
+      customer_overall_rating: rating,
+      event_id: '654238fdd91d696998edda73'
+    };
+    
     console.log('Name:', name);
     console.log('Number:', number);
     console.log('Rating:', rating);
-    navigate('/button');
+   
+    try {
+      const response = await axios.post('http://localhost:4000/api/customer', data);
+      console.log('API Response:', response.data);
+      navigate('/button');
+    } catch (error) {
+      console.error('API Error:', error);
+    }
   
   };
 
