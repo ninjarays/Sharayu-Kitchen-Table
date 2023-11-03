@@ -1,4 +1,5 @@
 const eventSchema = require('../models/eventSchema')
+const productSchema = require('../models/productSchema');
 
 // Contoller to Get all the events
 exports.getAllevent = async (req, res) => {
@@ -18,6 +19,17 @@ exports.getAllevent = async (req, res) => {
 // Contoller to Create a New event
 exports.Addevent = async (req, res) => {
     try {
+        const products = req.body.products;
+        const productIds = products.map(product => product.product_id);
+        
+        // Fetch product names based on product ids
+        const productNames = await productSchema.find({ _id: { $in: productIds } }, 'product_name');
+
+        // Add the product names to req.body
+        for (let i = 0; i < products.length; i++) {
+            products[i].product_name = productNames.find(product => product._id.toString() === products[i].product_id).product_name;
+        }
+
         const event = await eventSchema.create(req.body);
         res.status(200).json({
             status: 'success',

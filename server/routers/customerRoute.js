@@ -10,4 +10,5 @@ router
 router
     .route('/:id')
     .get(customerController.getCustomer) // Contoller to fetch a Customer info by Customer id
+    .patch(customerController.updateProductrating) // Controller to Add product rating and feedback from customer
 module.exports = router;

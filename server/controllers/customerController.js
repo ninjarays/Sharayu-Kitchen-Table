@@ -45,3 +45,18 @@ exports.getCustomer = async (req, res) => {
         res.status(500).json({ status: 'Fail', Message: err });
     }
 }
+
+// Controller to Add product rating and feedback from customer
+exports.updateProductrating = async (req, res) => {
+    try {
+        const customer = await customerSchema.findByIdAndUpdate(req.params.id, {products: req.body});
+        res.status(200).json({
+            status: 'success',
+            data: {
+                customer
+            }
+        });
+    } catch (err) {
+        res.status(500).json({ status: 'Fail', Message: err });
+    }
+}

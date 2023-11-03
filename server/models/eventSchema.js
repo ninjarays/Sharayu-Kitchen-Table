@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const productSchema = ({
     product_id: {
-        type: mongoose.Schema.Types.String,
-        ref: 'Product'
+        type: String
+    },
+    product_name: {
+        type: String
     }
 });
 
@@ -31,15 +33,15 @@ const eventSchema = new mongoose.Schema({
     event_rating: {
         type: Number,
         required: true,
-        min: 1,
+        min: 0,
         max: 5,
-        default: "TBD"
+        default: 0
     },
     ratings: {
         type: Number,
         default: 0
     },
-    products: [productSchema] // Embed product schema here
+    products: [productSchema]
 });
 
 const event = mongoose.model('event', eventSchema);
