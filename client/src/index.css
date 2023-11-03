@@ -21,6 +21,8 @@ code {
 .event-name{
   font-family: 'Orelega One', serif;
   font-size: x-large;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .give-feedback{
   margin-top: 4vh;

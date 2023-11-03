@@ -1,17 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { useCustomer } from '../Components/CustomerContext';
+import { useEvent } from '../Components/EventContext';
 
 const UserFeedBackPage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [email, setEmail] = useState('');
+  const { eventId } = useEvent();
+  const { setCustomerId } = useCustomer();
   const [rating, setRating] = useState(2);
+  const [eventName, setEventName] = useState('');
+
+  useEffect(() => {
+    // Fetch the event name from the API
+    axios.get(`http://localhost:4000/api/event/${eventId}`)
+      .then(response => {
+        setEventName(response.data.data.event.event_name);
+      })
+      .catch(error => {
+        console.error('API Error:', error);
+      });
+  }, [eventId]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +34,7 @@ const UserFeedBackPage = () => {
       customer_name: name,
       customer_phone: number,
       customer_overall_rating: rating,
-      event_id: '654238fdd91d696998edda73'
+      event_id: eventId
     };
     
     console.log('Name:', name);
@@ -29,6 +44,7 @@ const UserFeedBackPage = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/customer', data);
       console.log('API Response:', response.data);
+      setCustomerId(response.data.data.customer._id);
       navigate('/button');
     } catch (error) {
       console.error('API Error:', error);
@@ -40,7 +56,7 @@ const UserFeedBackPage = () => {
   return (
     <>
     <div className='userfeedback'>
-    <div className='event-name'>Event Name</div>
+    <div className='event-name'>{eventName}</div>
     <div className='give-feedback'>
     Give Feedback
     </div>

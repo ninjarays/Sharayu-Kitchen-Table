@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 
-const ProductFeedback = ({  name, imgSrc, onProductFeedback }) => {
+const ProductFeedback = ({ productid, name, imgSrc, onProductFeedback }) => {
   const [value, setValue] = React.useState(2);
   const [feedback, setFeedback] = useState('');
 
   const handleRatingChange = (event, newValue) => {
     setValue(newValue);
-    // Pass the rating and feedback to the parent component
-    onProductFeedback( name,newValue, feedback );
-    // console.log(`Rating changed for ${name}: ${newValue}`);
+  
+    onProductFeedback( productid, name,newValue, feedback );
+
   };
 
   const handleFeedbackChange = (e) => {
     setFeedback(e.target.value);
-    // Pass the rating and feedback to the parent component
-    onProductFeedback( name,value, e.target.value);
-    // console.log(`Feedback changed for ${name}: ${e.target.value}`);
+  
+    onProductFeedback(productid, name ,value, e.target.value);
   };
 
 

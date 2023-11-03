@@ -5,11 +5,15 @@ import ThankYouPage from './Pages/ThankYouPage';
 import ButtonPage from './Pages/ButtonPage';
 import DishFeedBackPage from './Pages/DishFeedBackPage';
 import MenuPage from './Pages/MenuPage';
+import { CustomerProvider } from './Components/CustomerContext';
+import { EventProvider } from './Components/EventContext';
 
 function App() {
   return (
     <div className="App">
      <Router>
+     <EventProvider> 
+     <CustomerProvider>
         <Routes>
           <Route path="/dishFeedback" element={<DishFeedBackPage />} />
           <Route path="/button" element={<ButtonPage />} />
@@ -19,6 +23,8 @@ function App() {
           <Route path="/" element={<UserFeedBackPage />} />
           <Route path="*" element={<h1 style={{ marginTop: "5rem" }}>404 Not Found</h1>} />
         </Routes>
+        </CustomerProvider>
+        </EventProvider>
       </Router>
     </div>
   );

@@ -3,16 +3,18 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import ProductFeedback from '../Components/ProductFeedback';
 import dish from '../img/dish.png';
+import { useCustomer } from '../Components/CustomerContext';
 
 
 const DishFeedBackPage = () => {
       const navigate = useNavigate();
+      const { customerId } = useCustomer();
       const [productFeedback, setProductFeedback] = useState([]);
       const [productsData, setProductsData] = useState([]);
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:4000/api/event/6543ce9bd80c7c393cc1924d');
+            const response = await fetch('http://localhost:4000/api/event/65449ddda500a99901665360');
             const data = await response.json();
     
             if (data.status === 'success') {
@@ -28,31 +30,64 @@ const DishFeedBackPage = () => {
         fetchData();
       }, []);
     
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Submit button clicked.');
         console.log('Product Feedback Data:', productFeedback);
-
-        navigate('/thankyou');
+      
+        try {
+          const response = await fetch(`http://localhost:4000/api/customer/${customerId}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(productFeedback),
+          });
+      
+          if (response.ok) {
+            console.log('Feedback submitted successfully');
+            navigate('/thankyou');
+          } else {
+            console.error('Failed to submit feedback');
+          }
+        } catch (error) {
+          console.error('Error submitting feedback:', error);
+        }
       };
+     
 
+const handleProductFeedback = (productid, name, rating, feedback) => {
+  const existingFeedbackIndex = productFeedback.findIndex((item) => item.product_id === productid);
 
-const handleProductFeedback = (name, rating, feedback) => {
-  // Add feedback for the current product to the array
-  setProductFeedback((prevFeedback) => [
-    ...prevFeedback,
-    { name, rating, feedback },
-  ]);
+  if (existingFeedbackIndex !== -1) {
+    // If feedback for the same product already exists, update it
+    const updatedFeedback = [...productFeedback];
+    updatedFeedback[existingFeedbackIndex] = {
+      ...updatedFeedback[existingFeedbackIndex],
+      product_name: name,
+      product_rating: rating,
+      product_feedback: feedback,
+    };
+    setProductFeedback(updatedFeedback);
+  } else {
+    // If feedback for the product doesn't exist, add it
+    setProductFeedback((prevFeedback) => [
+      ...prevFeedback,
+      {
+        product_id: productid,
+        product_name: name,
+        product_rating: rating,
+        product_feedback: feedback,
+      },
+    ]);
+  }
 };
-
-
       const handleSubmit1 = () => {
     
         navigate('/menu');
       
       };
 
-     
     
   return (
     <div>
@@ -64,7 +99,7 @@ const handleProductFeedback = (name, rating, feedback) => {
          <form onSubmit={handleSubmit}>
           <div className='productFeedback'>
           {productsData.map((product, index) => (
-            <ProductFeedback key={index} name={product.product_id} imgSrc={dish}  onProductFeedback={handleProductFeedback} />
+            <ProductFeedback key={index} name={product.product_name} productid={product.product_id} imgSrc={dish}  onProductFeedback={handleProductFeedback} />
           ))}
 
           </div>
