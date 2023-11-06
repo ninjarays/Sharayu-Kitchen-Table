@@ -4,17 +4,19 @@ import { useNavigate } from 'react-router-dom';
 import ProductFeedback from '../Components/ProductFeedback';
 import dish from '../img/dish.png';
 import { useCustomer } from '../Components/CustomerContext';
+import {useEvent} from '../Components/EventContext';
 
 
 const DishFeedBackPage = () => {
       const navigate = useNavigate();
       const { customerId } = useCustomer();
+      const { eventId } = useEvent();
       const [productFeedback, setProductFeedback] = useState([]);
       const [productsData, setProductsData] = useState([]);
       useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:4000/api/event/65449ddda500a99901665360');
+            const response = await fetch(`http://localhost:4000/api/event/${eventId}`);
             const data = await response.json();
     
             if (data.status === 'success') {
