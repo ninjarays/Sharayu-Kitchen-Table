@@ -222,3 +222,106 @@ code {
     font-family: 'noto serif thai', serif;
     font-weight: 700;
 }
+
+
+/* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center; */
+
+
+    /* margin-bottom: 9vh;
+    font-size: larger;
+    padding-left: 3vw;
+    padding-right: 3vw; */
+.tab2-quote{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+.quote-text{
+  margin-bottom: 9vh;
+  font-size: larger;
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
+.css-ahj2mt-MuiTypography-root {
+  height: 80vh;
+}
+
+.thankyouQuote{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.tyQuote{
+  padding-left: 5vw;
+  padding-right: 5vw;
+  font-size: larger;
+  margin-bottom: 20vh;
+}
+
+.food-dropdown {
+  position: relative;
+}
+
+.food-dropdown.open {
+  margin-bottom: 220px; 
+}
+
+.food-dropdown-button{
+  width: 80vw !important;
+    border: none !important;
+    border-bottom: 1px solid black !important;
+    border-radius: 0 !important;
+    justify-content: space-between !important;
+    text-transform: none !important;
+    color: black !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+}
+.no-of-guest{
+  .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root{
+    width: 80vw!important;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    margin-left: 4.5vw;
+  }
+  .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+    padding: 10px 10px !important;
+  
+  }
+}
+
+.get-quote-button-div {
+  position: fixed;
+    bottom: 0vh;
+    z-index: 1000;
+    background-color: #D9D9D9;
+    width: 100vw;
+    left: 0px;
+  .css-1fu7jd5-MuiButtonBase-root-MuiButton-root{
+    border-radius: 10px !important;
+    min-width: 55vw !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+    background-color: white!important;
+    margin-bottom: 4vh;
+    width: 70vw;
+    box-shadow: none !important;
+    margin-top: 3vh!important;
+  }
+}
+.css-19kzrtu {
+  padding: 0px !important;
+}
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root{
+ padding: 0px !important;
+}
