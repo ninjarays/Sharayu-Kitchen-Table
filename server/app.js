@@ -8,6 +8,9 @@ app.use(cors());
 const eventsRoute = require('./routers/eventsRoute')
 const productRoute = require('./routers/productRoute')
 const customerRoute = require('./routers/customerRoute')
+const categoryRoute = require('./routers/categoryRoute')
+const quotesRoute = require('./routers/quotesRoute')
+
 const morgan = require('morgan')
 app.use(morgan('dev'))
 
@@ -19,6 +22,8 @@ app.use(bodyParser.json())
 app.use('/api/event', eventsRoute);
 app.use('/api/product', productRoute);
 app.use('/api/customer', customerRoute);
+app.use('/api/category', categoryRoute);
+app.use('/api/quotes', quotesRoute);
 
 //Testing Route
 app.get('/', (req, res) => {
