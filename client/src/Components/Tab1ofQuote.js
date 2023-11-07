@@ -12,7 +12,7 @@ const Tab1ofQuote = ({ onGetQuote }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/api/category')
+    axios.get('https://kitchen-yver.onrender.com/api/category')
       .then((response) => {
         const data = response.data;
         if (data.status === 'success') {
@@ -29,14 +29,14 @@ const handleCategoryOptionSelect = (category, option) => {
     const isOptionSelected = selectedCategories[category] && selectedCategories[category].includes(option);
   
     if (isOptionSelected) {
-      // If the option is already selected, remove it from the selectedProducts array
+      
       setSelectedProducts((prevSelectedProducts) => prevSelectedProducts.filter((product) => product.product_name !== option));
       setSelectedCategories((prevSelectedCategories) => ({
         ...prevSelectedCategories,
         [category]: prevSelectedCategories[category].filter((selectedOption) => selectedOption !== option),
       }));
     } else {
-      // If the option is not selected, add it to the selectedProducts array
+   
       const selectedProduct = categoryData
         .find((cat) => cat.category_id === category)
         .products.find((product) => product.product_name === option);

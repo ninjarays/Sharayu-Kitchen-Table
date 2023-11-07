@@ -18,7 +18,7 @@ const Tab2ofQuote = ({ selectedProducts , guestnumber  }) => {
         products: selectedProducts, 
       };
     console.log('data',data);
-      axios.post('http://localhost:4000/api/quotes', data)
+      axios.post('https://kitchen-yver.onrender.com/api/quotes', data)
         .then((response) => {
           navigate('/thankyouQuote');
         })

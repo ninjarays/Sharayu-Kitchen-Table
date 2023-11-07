@@ -215,14 +215,14 @@ code {
   
 }
 
-.css-96uuyl {
+/* .css-96uuyl {
   position: relative;
   border-radius: 25px !important;
   border: 1px solid #CCCCE0 !important;
   background-color: rgba(255, 255, 255, 0.15);
  margin-right: 0px !important; ; 
   width: 80vw !important;
-}
+} */
 
 .search-menu{
   display: flex;
@@ -254,9 +254,9 @@ code {
   padding-right: 3vw;
 }
 
-.css-ahj2mt-MuiTypography-root {
+/* .css-ahj2mt-MuiTypography-root {
   height: 80vh;
-}
+} */
 
 .thankyouQuote{
   display: flex;
