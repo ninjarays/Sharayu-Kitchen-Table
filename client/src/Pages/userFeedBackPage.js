@@ -18,7 +18,7 @@ const UserFeedBackPage = () => {
 
   useEffect(() => {
     // Fetch the event name from the API
-    axios.get(`http://localhost:4000/api/event/${eventId}`)
+    axios.get(`https://kitchen-yver.onrender.com/api/event/${eventId}`)
       .then(response => {
         setEventName(response.data.data.event.event_name);
       })
@@ -42,7 +42,7 @@ const UserFeedBackPage = () => {
     console.log('Rating:', rating);
    
     try {
-      const response = await axios.post('http://localhost:4000/api/customer', data);
+      const response = await axios.post('https://kitchen-yver.onrender.com/api/customer', data);
       console.log('API Response:', response.data);
       setCustomerId(response.data.data.customer._id);
       navigate('/button');
