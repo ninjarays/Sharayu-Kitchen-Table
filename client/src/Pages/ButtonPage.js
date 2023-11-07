@@ -18,12 +18,12 @@ const ButtonPage = () => {
     <>
     <div className='button-two'>
     <div className='continue-feedback'>
-          <Button type="submit" variant="contained" onClick={handleSubmit1} >
+          <Button type="submit" className='continue-feedback-button' variant="contained" onClick={handleSubmit1} >
           Continue feedback
           </Button>
         </div>
         <div className='Skip-to-Menu'>
-          <Button type="submit" variant="contained" onClick={handleSubmit2}>
+          <Button type="submit" variant="contained" className="Skip-to-Menu-button"onClick={handleSubmit2}>
           Skip to Menu
           </Button>
         </div>

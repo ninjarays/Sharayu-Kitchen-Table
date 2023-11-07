@@ -26,12 +26,12 @@ const ThankYouPage = () => {
         Now you get Rs 50 off your next order. Save your coupon AHDUYD786
         </div>
         <div className='coupon-button'>
-          <Button type="submit" variant="contained"  onClick={handleSubmit1}>
+          <Button type="submit" variant="contained" className='coupon-button-b' onClick={handleSubmit1}>
           USE COUPON
           </Button>
         </div>
         <div className='Skip-to-Menu' >
-          <Button type="submit" variant="contained" onClick={handleSubmit2}>
+          <Button type="submit" variant="contained" className='Skip-to-Menu-button' onClick={handleSubmit2}>
           Go to Menu
           </Button>
         </div>

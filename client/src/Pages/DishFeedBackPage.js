@@ -72,7 +72,6 @@ const handleProductFeedback = (productid, name, rating, feedback) => {
     };
     setProductFeedback(updatedFeedback);
   } else {
-    // If feedback for the product doesn't exist, add it
     setProductFeedback((prevFeedback) => [
       ...prevFeedback,
       {
@@ -94,7 +93,7 @@ const handleProductFeedback = (productid, name, rating, feedback) => {
   return (
     <div>
       <div className='skipButton'>
-      <Button type="submit" variant="contained" color="primary" onClick={handleSubmit1}>
+      <Button type="submit" className='skip-button' variant="contained" color="primary" onClick={handleSubmit1}>
             Skip
           </Button>
       </div>
@@ -106,7 +105,7 @@ const handleProductFeedback = (productid, name, rating, feedback) => {
 
           </div>
          <div className='dish-feedback-submit'>
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" className='dish-feedback-submit-button' variant="contained"  color="primary">
             Submit
           </Button>
         </div>

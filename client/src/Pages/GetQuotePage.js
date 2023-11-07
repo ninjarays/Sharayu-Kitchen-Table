@@ -43,14 +43,18 @@ function a11yProps(index) {
 
 const GetQuotePage = () => {
   const [value, setValue] = React.useState(0);
+  const [selectedProducts, setSelectedProducts] = React.useState([]);
+  const [guestnumber, setGuestnumber] = React.useState('');
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const handleGetQuote = () => {
-    // This function is called when the "Get Quote" button is pressed in Tab1ofQuote.
-    // Set the active tab (value) to 1 to redirect to Tab2ofQuote.
+  const handleGetQuote = (selectedProducts, guestnumber) => {
+
     setValue(1);
+
+    setSelectedProducts(selectedProducts);
+    setGuestnumber(guestnumber);
   };
 
   return (
@@ -66,7 +70,7 @@ const GetQuotePage = () => {
        <Tab1ofQuote onGetQuote={handleGetQuote}/>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Tab2ofQuote/>
+        <Tab2ofQuote selectedProducts={selectedProducts}  guestnumber={guestnumber} />
       </CustomTabPanel>
     </Box>
   );

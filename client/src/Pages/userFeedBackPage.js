@@ -98,7 +98,7 @@ const UserFeedBackPage = () => {
 
        
         <div>
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="contained" color="primary" className='user-submit'>
             Submit
           </Button>
         </div>

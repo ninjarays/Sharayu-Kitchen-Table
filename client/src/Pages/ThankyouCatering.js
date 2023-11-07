@@ -15,7 +15,7 @@ const ThankyouCatering = () => {
         Thank you for submitting your requirement and some one from our team will get back to you in 24 hours
         </div>
         <div className='Skip-to-Menu' >
-          <Button type="submit" variant="contained" onClick={handleSubmit2}>
+          <Button type="submit" variant="contained" className='tab2-button' onClick={handleSubmit2}>
           Go to Menu
           </Button>
         </div>
