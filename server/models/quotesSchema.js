@@ -18,6 +18,10 @@ const quoteSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    customer_guest_number: {
+        type: Number,
+        required: true
+    },
     products: [productSchema]
 });
 
