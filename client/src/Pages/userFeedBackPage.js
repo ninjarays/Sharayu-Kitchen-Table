@@ -3,18 +3,16 @@ import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import { useCustomer } from '../Components/CustomerContext';
-import { useEvent } from '../Components/EventContext';
 import axios from '../config/axios';
+import { useParams } from 'react-router-dom';
 
 const UserFeedBackPage = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { eventId } = useEvent();
-  const { setCustomerId } = useCustomer();
   const [rating, setRating] = useState(2);
   const [eventName, setEventName] = useState('');
+  const { eventId } = useParams();
 
   useEffect(() => {
     // Fetch the event name from the API
@@ -44,8 +42,8 @@ const UserFeedBackPage = () => {
     try {
       const response = await axios.post('/api/customer', data);
       console.log('API Response:', response.data);
-      setCustomerId(response.data.data.customer._id);
-      navigate('/button');
+      localStorage.setItem('customerId', response.data.data.customer._id);
+      navigate(`/button/${eventId}`);
     } catch (error) {
       console.error('API Error:', error);
     }

@@ -60,9 +60,21 @@ const GetQuotePage = () => {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab className='tab1' label="1" {...a11yProps(0)} />
-          <Tab label="2" {...a11yProps(1)} />
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'black', 
+            },
+          }}>
+          <Tab className='tab1' label="1" {...a11yProps(0)} sx={{
+              '&.Mui-selected': {
+                color: 'black',
+              },
+            }} />
+          <Tab label="2" {...a11yProps(1)} sx={{
+              '&.Mui-selected': {
+                color: 'black',
+              },
+            }} />
          
         </Tabs>
       </Box>

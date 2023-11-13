@@ -340,3 +340,6 @@ code {
 input{
   padding: 10px 10px !important;
 }
+.MultiTabs-indicator{
+  background-color: black !important;
+}

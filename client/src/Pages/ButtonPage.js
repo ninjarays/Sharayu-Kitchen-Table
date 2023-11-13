@@ -1,12 +1,13 @@
 import React from 'react'
 import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ButtonPage = () => {
     const navigate = useNavigate();
+    const { eventId } = useParams();
     const handleSubmit1 = (e) => {
         e.preventDefault();
-        navigate('/dishFeedback');
+        navigate(`/dishFeedback/${eventId}`);
       
       };
       const handleSubmit2 = (e) => {

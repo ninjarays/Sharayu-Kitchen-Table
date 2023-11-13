@@ -13,7 +13,7 @@ const ThankYouPage = () => {
   const handleSubmit2 = () => {
    
 
-    navigate('/menu');
+    navigate('/');
   
   };
   return (

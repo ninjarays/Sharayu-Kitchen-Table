@@ -23,9 +23,11 @@ function FoodDropdown({ label, options, selectedOptions, onOptionSelect }) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const dropdownStyle = {
+    marginBottom: open ? `${options.length * 9}vh` : '0',
+  };
   return (
-    <div className={`food-dropdown ${open ? 'open' : ''}`}>
+    <div className={`food-dropdown ${open ? 'open' : ''}`} style={dropdownStyle} >
       <Button
         onClick={handleButtonClick}
         className='food-dropdown-button'

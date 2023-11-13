@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const ThankyouCatering = () => {
     const navigate = useNavigate();
     const handleSubmit2 = () => {
-        navigate('/menu');
+        navigate('/');
       
       };
   return (
