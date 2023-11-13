@@ -3,9 +3,9 @@ import Rating from '@mui/material/Rating';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { useCustomer } from '../Components/CustomerContext';
 import { useEvent } from '../Components/EventContext';
+import axios from '../config/axios';
 
 const UserFeedBackPage = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const UserFeedBackPage = () => {
 
   useEffect(() => {
     // Fetch the event name from the API
-    axios.get(`https://kitchen-yver.onrender.com/api/event/${eventId}`)
+    axios.get(`/api/event/${eventId}`)
       .then(response => {
         setEventName(response.data.data.event.event_name);
       })
@@ -42,7 +42,7 @@ const UserFeedBackPage = () => {
     console.log('Rating:', rating);
    
     try {
-      const response = await axios.post('https://kitchen-yver.onrender.com/api/customer', data);
+      const response = await axios.post('/api/customer', data);
       console.log('API Response:', response.data);
       setCustomerId(response.data.data.customer._id);
       navigate('/button');

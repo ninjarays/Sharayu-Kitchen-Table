@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tab1ofQuote from '../Components/Tab1ofQuote';
-import Tab2ofQuote from '../img/Tab2ofQuote';
+import Tab2ofQuote from '../Components/Tab2ofQuote';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -20,8 +20,8 @@ function CustomTabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 3 }} className='box-tab' >
+          <Typography className='typography-tab'>{children}</Typography>
         </Box>
       )}
     </div>
@@ -44,7 +44,7 @@ function a11yProps(index) {
 const GetQuotePage = () => {
   const [value, setValue] = React.useState(0);
   const [selectedProducts, setSelectedProducts] = React.useState([]);
-  const [guestnumber, setGuestnumber] = React.useState('');
+  const [guestnumber, setGuestnumber] = React.useState();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -61,8 +61,8 @@ const GetQuotePage = () => {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab className='tab1' label="1" {...a11yProps(0)} />
+          <Tab label="2" {...a11yProps(1)} />
          
         </Tabs>
       </Box>

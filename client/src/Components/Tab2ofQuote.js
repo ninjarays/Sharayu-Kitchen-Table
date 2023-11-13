@@ -2,23 +2,24 @@ import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
+import axios from '../config/axios';
 
 const Tab2ofQuote = ({ selectedProducts , guestnumber  }) => {
     const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+    const [number, setNumber] = useState();
     const navigate = useNavigate();
     console.log('guestnumber', guestnumber);
 
     const handleSubmit2 = () => {
       const data = {
         customer_name: name,
-        customer_phone: number,
-        customer_guest_number: guestnumber,
+        customer_phone: parseInt(number, 10),
+        customer_guest_number:parseInt(guestnumber, 10),
         products: selectedProducts, 
       };
     console.log('data',data);
-      axios.post('https://kitchen-yver.onrender.com/api/quotes', data)
+      axios.post('/api/quotes', data)
         .then((response) => {
           navigate('/thankyouQuote');
         })
@@ -48,7 +49,7 @@ const Tab2ofQuote = ({ selectedProducts , guestnumber  }) => {
         <div>
         <TextField
             id="number"
-            type="text"
+            type="number"
             placeholder='Enter Phone Number  '
             value={number}
             className='user-textfield'

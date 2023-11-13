@@ -3,16 +3,16 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FoodDropdown from './FoodDropdown';
 import Container from '@mui/material/Container';
-import axios from 'axios';
+import axios from '../config/axios';
 
 const Tab1ofQuote = ({ onGetQuote }) => {
-  const [guestnumber, setGuestnumber] = useState('');
+  const [guestnumber, setGuestnumber] = useState();
   const [selectedCategories, setSelectedCategories] = useState({});
   const [categoryData, setCategoryData] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
 
   useEffect(() => {
-    axios.get('https://kitchen-yver.onrender.com/api/category')
+    axios.get('/api/category')
       .then((response) => {
         const data = response.data;
         if (data.status === 'success') {
@@ -65,7 +65,7 @@ const handleCategoryOptionSelect = (category, option) => {
       <div className="no-of-guest">
         <TextField
           id="guestnumber"
-          type="text"
+          type="number"
           placeholder="Enter Number of guests"
           value={guestnumber}
           fullWidth
