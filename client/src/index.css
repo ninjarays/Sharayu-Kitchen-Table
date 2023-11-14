@@ -263,7 +263,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .tyQuote{
@@ -342,4 +342,7 @@ input{
 }
 .MultiTabs-indicator{
   background-color: black !important;
+}
+.box-tab{
+  margin-bottom: 10vh
 }

@@ -24,7 +24,7 @@ function FoodDropdown({ label, options, selectedOptions, onOptionSelect }) {
     setAnchorEl(null);
   };
   const dropdownStyle = {
-    marginBottom: open ? `${options.length * 9}vh` : '0',
+    marginBottom: open ? `${options.length * 8}vh` : '0',
   };
   return (
     <div className={`food-dropdown ${open ? 'open' : ''}`} style={dropdownStyle} >
