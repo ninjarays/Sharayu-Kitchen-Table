@@ -18,6 +18,7 @@ const customer_product_rating_event = ({
 })
 
 const customerSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     customer_name: {
         type: String,
         required: true

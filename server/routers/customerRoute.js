@@ -8,6 +8,10 @@ router
     .post(customerController.addCustomer) // Contoller to create a new Customer
 
 router
+    .route('/cronPast24hoursCustomers')
+    .get(customerController.cronPast24hoursCustomers)
+    
+router
     .route('/:id')
     .get(customerController.getCustomer) // Contoller to fetch a Customer info by Customer id
     .patch(customerController.updateProductrating) // Controller to Add product rating and feedback from customer
