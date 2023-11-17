@@ -12,7 +12,7 @@ const ButtonPage = () => {
       };
       const handleSubmit2 = (e) => {
         e.preventDefault();
-        navigate('/menu');
+        navigate('/');
       
       };
   return (

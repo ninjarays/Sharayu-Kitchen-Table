@@ -4,14 +4,15 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: '90px',
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     '&:hover': {
       backgroundColor: alpha(theme.palette.common.white, 0.25),
     },
-    marginRight: theme.spacing(2),
+    marginRight: 0,
     marginLeft: 0,
-    width: '100%',
+    width: '85%',
+    border: '1px solid black',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(3),
       width: 'auto',
@@ -45,11 +46,12 @@ const Search = styled('div')(({ theme }) => ({
 
 const Searchbar = () => {
   return (
-    <div className='search-menu'><Search>
-    <SearchIconWrapper>
+    <div className='search-menu'><Search className='search'>
+    <SearchIconWrapper className='search-wrapper'>
       <SearchIcon />
     </SearchIconWrapper>
     <StyledInputBase
+    className='search-input'
       placeholder="Search"
       inputProps={{ 'aria-label': 'search' }}
     />
